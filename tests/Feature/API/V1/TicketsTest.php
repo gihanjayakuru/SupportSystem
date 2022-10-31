@@ -30,15 +30,36 @@ class TicketsTest extends TestCase
             'phone' => '1234567',
             'description' => 'There is somthing... ',
         ]);
-        
+
         $response->assertStatus(200);
 
         $response->assertJson([
             'data' => [
                 'email' => 'gihantest@gmail.com',
-            ]
-            ]);
+            ],
+        ]);
+    }
 
+
+    public function test_show_new_ticket()
+    {
+
+        $response = $this->withHeaders([
+            'Accept' => 'application/json',
+                   
+        ])->get( 'api/v1/tickets', [
+            'customer_name' => 'Gihan test',
+        ]);
+
+        $response->assertStatus(200);
+
+        // $response->assertJson([
+        //     'data' => [
+        //         'email' => 'gihantest@gmail.com',
+        //     ],
+        // ]);
 
     }
+
+
 }

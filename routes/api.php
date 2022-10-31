@@ -33,12 +33,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     Route::post('/tickets',  'store');
 // });
 
+Route::get('/tickets', [TicketsController::class,'list']);
+
 Route::group([
     'namespace' => 'App\Http\Controllers\API\V1',
     'prefix' => 'v1',
 ], function() {
     Route::post('/tickets', [TicketsController::class, 'store']);
     Route::get('/tickets', [TicketsController::class, 'show']);
+    Route::get('/tickets', [TicketsController::class, 'index']);
     Route::get('/tickets/{ref}', [TicketsController::class,'search']);
 });
 

@@ -18,10 +18,6 @@ class TicketController extends Controller
     {
         $tickets = Ticket::paginate($request->query('per_page', 10));
 
-        // return view('tickets.index', [
-        //     'tickets' => $tickets,
-        // ]);
-
         $ticketsQuery = Ticket::query();
 
         $q = $request->query('q');
